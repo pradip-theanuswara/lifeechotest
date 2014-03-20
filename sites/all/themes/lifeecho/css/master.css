@@ -2315,6 +2315,7 @@ font-size:13px;
     width:178px;
     float:left;
     margin-right: 11px;
+	font-family: monospace;
 }
 
 #community-lifeecho-node-form .community_form_view {
@@ -2332,6 +2333,7 @@ font-size:13px;
 #community-lifeecho-node-form textarea {
     height:60px;
     width:350px;
+	font-family:monospace;
 }
 
 #community-lifeecho-node-form .form-textarea-wrapper {
@@ -2345,6 +2347,7 @@ font-size:13px;
 
 #community-lifeecho-node-form .community_textarea_view input {
     margin-left:12px;
+	font-family:monospace;
 }
 
 #community-lifeecho-node-form .community_textarea_view .grippie {
@@ -2418,10 +2421,12 @@ font-size:13px;
 
 #community-lifeecho-node-form .communityfield_row #edit-field-what-is-the-name-of-your-o-und-0-value {
     width:350px;   
+	font-family: monospace;
 }
 
 #community-lifeecho-node-form .communityfield_row #edit-field-address-und-0-value {
     width:350px;
+	font-family: monospace;
 }
 
 /*#community-lifeecho-node-form .communityfield_row #edit-field-city-und-0-value {
@@ -2434,15 +2439,18 @@ font-size:13px;
 
 #community-lifeecho-node-form .communityfield_row #edit-field-zip-und-0-value {
     margin-left: 19px;
+	font-family: monospace;
     /*width:100px;*/
 }
 
 #community-lifeecho-node-form .communityfield_row #edit-field-website-und-0-value {
     width:350px;
+	font-family: monospace;
 }
 
 #community-lifeecho-node-form .communityfield_row #edit-field-email-address-und-0-email {
     width:350px;
+	font-family: monospace;
 }
 
 /*#community-lifeecho-node-form .field-name-field-city {
