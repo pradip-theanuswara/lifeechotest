@@ -775,7 +775,7 @@ $user_link_based_on_relation = check_allready_relation($user->uid,$alert_from); 
                 }
                 if($record['alerttext']=='connect in accountability with') {
                  
-                 $block['content'] .= '<li class="request_wrapper"><div class="uralert_text"><a href="'.$user_link_based_on_relation.'">'.$username_accept.'</a>'.t('has accepted your invitation to join accountability with him ').t('- go to User Dashboard').' <span class="alerttime">'.$alert_time.'</span></div>';
+                 $block['content'] .= '<li class="request_wrapper"><div class="uralert_text"><a href="'.$user_link_based_on_relation.'">'.$username_accept.'</a>'.t(' has accepted your invitation to join accountability with him ').t('- go to User Dashboard').' <span class="alerttime">'.$alert_time.'</span></div>';
 
                 $block['content'] .= '<div class="uralert_buttons">'.l(t('Remove'),'removealert/'.$alert_id,array('attributes' => array('class' => 'relationship_accept')));
                 }else {

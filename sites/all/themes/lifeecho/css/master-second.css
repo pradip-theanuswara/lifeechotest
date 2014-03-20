@@ -490,6 +490,7 @@ height:113px;
 width:72px; /*45px;*/
 /*height:62px; 45px;*/
 float:left;
+margin-right:10px;
 }
 
 #searches .item-list ul.pager li {

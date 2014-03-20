@@ -92,7 +92,7 @@
 <div id="menu">
 
     <?php global $base_url;
-$beta =  "/LifeEcho/sites/all/themes/lifeecho/beta.png";
+$beta =  "/sites/all/themes/lifeecho/beta.png";
 ?>
         <?php if ($logo): ?>
 
