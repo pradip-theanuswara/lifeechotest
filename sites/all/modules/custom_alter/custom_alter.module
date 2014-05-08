@@ -580,11 +580,11 @@ $roles = og_get_user_roles('node', $node_id, $user->uid); // 3 - community admin
 if(($node_type == 'community_lifeecho') && (get_logged_user_community_ID() != $node_id) && (array_key_exists('3', $roles) == FALSE)) {
 
 // remove invite item from menu
-//unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2755]);
+unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2755]);
 // remove post message/video item from menu
-//unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2756]);
+unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2756]);
 // remove roster page item from menu
-//unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2757]);
+unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2757]);
 }
 }
 
@@ -609,6 +609,26 @@ $adminrole = user_has_community_adminrole(); // check user has admin role in any
     }
 } // END IF discipleship-101
 
+if((arg(0) == 'starteddplan')) { // check for discipleship 101 page
+
+$adminrole = user_has_community_adminrole(); // check user has admin role in any community
+
+    //if($adminrole == 0 && get_logged_user_community_ID() == NULL) {
+
+	// remove community item from menu.
+	unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m']['2797']);
+
+	// remove invite item from menu.
+	unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2755]);
+
+	// remove post message/video item from menu.
+	unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2756]);
+
+	// remove roster page item from menu.
+	unset($vars['page']['userprofilesidebar']['menu_menu-community-admin-dashboard-m'][2757]);
+
+   // }
+}
 
 if(((get_logged_user_community_ID() == NULL) && (user_has_community_adminrole() < 0 ))) {
 // remove community item from menu
@@ -1394,6 +1414,7 @@ $uid = $user->uid;
 
 $nodes = get_allcommunities_forauser(); // get all communities associated with a user ( created/joined)
 
+
 if ($view->name == 'discipler_user_dashboard_left_sidebar') {
  //echo "<pre>";
  //print_r($query);
@@ -1443,6 +1464,7 @@ if($view->name == 'matches_outside_of_your_community'){
 
 	
 }
+
 // alter views related with available user types on community profile page.
 
 if($view->name == 'available_disciplees' || $view->name == 'available_disciplers' || $view->name == 'available_accountability') {
@@ -1500,9 +1522,9 @@ if($view->name == 'available_disciplers') {
 
         if($row_count > 0) {
 
-    //   print "<pre>";
+       //print "<pre>";
 //print_r($query);
-unset($fields['users.uid']);
+//unset($fields['users.uid']);
 	 $query->where[1]['conditions'][3]['value'] = $nid;
 $query->where[1]['conditions'][4]['value'] = $nid;
           //
@@ -1511,6 +1533,7 @@ $query->where[1]['conditions'][4]['value'] = $nid;
    // $query->groupBy("users.uid");
 
 	}
+	echo $row_count;
 }
 
 // Available accountability block on lifeecho-community node page.
