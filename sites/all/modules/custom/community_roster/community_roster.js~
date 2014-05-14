@@ -45,6 +45,8 @@ function initializeTable() {
 
 	
 function change_stat(groupId,userId,changeType){
+//alert(dId);
+if(dId==109){
 	jQuery('#cg_check'+userId).next('.save_gif_outer').show();
    
 	jQuery.ajax({
@@ -59,11 +61,12 @@ function change_stat(groupId,userId,changeType){
 		success: function(data, status, request) {
 			var html = data;
 			jQuery('#cg_check'+userId).next('.save_gif_outer').hide();
-	
-
 		}
 	});	
 	
+}else{
+	alert('User has not opted to be a discipler');	
+}
 	
 	}
 
