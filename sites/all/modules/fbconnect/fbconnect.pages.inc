@@ -246,10 +246,10 @@ $params['redirect_uri'] = $rootURL.'/'.base_path().'fbconnect/register/create';
 //anu change ends
     $login_url = $facebook->getLoginUrl($params);
     $form['log_in_to_facebook'] = array(
-      '#title' => t('You must login to Facebook AND give the site access to use this feature'),
-      '#description' => t('Log in using your facebook account'),
+      '#title' => t('Thanks for using LifeEcho - we’ll have your profile up in one moment!'),
+      '#description' => t(''),
       '#type' => 'item',
-      '#markup' => l(t('Login using your Facebook account'), $login_url),
+      '#markup' => l(t(''), $login_url),
     );
     return $form;
 }
