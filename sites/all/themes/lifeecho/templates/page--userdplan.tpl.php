@@ -164,14 +164,14 @@ $community_count = get_logged_user_community_ID();
 
 <li class="menu-2768 menuparent  menu-path-front  first   odd  "><a title="Connect" <?php if(count(get_logged_user_joined_community_ID()) == 0) { ?>style="background-position: center top;" <?php } ?>><?php print t('Connect'); ?></a><ul>
 <?php if($hascommunity_count > 0) { // check logged user has a community */ ?>
-<li class="menu-2773 menu-path-community-dashboard  first odd"><a href="<?php echo url('community/dashboard'); ?>" title="My Community"><?php print t('My Community'); ?></a></li>
+<li class="menu-2773 menu-path-community-dashboard  first odd"><a href="#" title="My Community"><?php print t('My Community'); ?></a></li>
 <ul id="child-community-display" style="display: block; visibility:visible">
 <?php $community_array = get_logged_user_joined_community_ID();
 if(count($community_array) > 0) {
 for($i=0;$i<count($community_array);$i++) {
 $pieces = explode('/',$community_array[$i]);
 ?>
-<li><a href="<?php echo url('node/'.$pieces[0]); ?>" title="My Community"><?php 
+<li><a href="<?php echo url('node/'.$pieces[0]).'?sparam=1'; ?>" title="My Community"><?php 
 if(get_logged_user_community_ID() == $pieces[0])
 echo $pieces[1].' (created) ';
 else
@@ -223,7 +223,7 @@ if(count($community_array) > 0) {
                         <div class="user">
                             <div id="imgdiv1">
 <?php
-if(arg(0) == 'user' || arg(0) == 'users') {
+if(arg(0) == 'user' || arg(0) == 'users' || arg(0) == 'userdplan') {
                                 print l(t('USER DASHBOARD'),'user', array('attributes' => array('class' => 'dashboard-link'))).'</br>';
 if($community_count != '' || $community_count_admin > 0) { // check logged user has a community
 print l(t('ADMIN DASHBOARD'),'community/dashboard');
