@@ -251,6 +251,7 @@ $form['field_what_do_you_want_to_tell_o']['#access'] = TRUE;
 $form['field_marital_status']['#access'] = TRUE;
 $form['field_children']['#access'] = TRUE;
 $form['field_occupation']['#access'] = TRUE;
+$form['field_gender']['#access'] = TRUE;
 $form['field_age']['#access'] = TRUE;
 $form['field_email_adrs']['#access'] = TRUE;
 $form['field_user_city']['#access'] = TRUE;
@@ -727,7 +728,7 @@ function custom_alter_node_presave($node) {
   $node_count = $results['ncount'];
   
   if($node_count == 1 && arg(1) == 'add') {
-      drupal_set_message(t('Only one Community per member is allowed'), 'error');
+       drupal_set_message(t('Only one Community per member is allowed'), 'error');
       drupal_goto('node/add/community-lifeecho');
   }
 	else{
@@ -1388,7 +1389,7 @@ $dbid = db_insert('community_proximity')
 
 if($node->type == 'community_content') {
 
-// The Mudcat Admin has posted a message: “Evangelism Training #1�?
+// The Mudcat Admin has posted a message: “Evangelism Training #1\E2\80?
 
 db_insert('lifeecho_alerts')
 ->fields(array(
@@ -1406,7 +1407,7 @@ drupal_goto('node/add/community-content');
 
 if($node->type == 'community_video') {
 
-// The Mudcat Admin has posted a video: “Evangelism Training #1�?
+// The Mudcat Admin has posted a video: “Evangelism Training #1\E2\80?
 
 db_insert('lifeecho_alerts')
 ->fields(array(
@@ -1579,6 +1580,46 @@ $query_custom =   db_select('node', 'n');
 	  $query->where[1]['conditions'][4]['value'] = $nid;
 	}
 
+}
+
+$block_id_array=array(
+  "user_matches_accountability",
+  "user_matches_disciplee",
+  "user_matches_discipler",
+  "matches_outside_of_your_community_displee",
+  "matches_outside_of_your_community_discipler",
+  "matches_outside_of_your_community"
+  );
+
+if(in_array($view->name,$block_id_array))
+{
+
+  $gender=get_user_gender();
+
+  if($gender!="")
+  {
+    $join = new views_join();
+    $join->table = 'field_data_field_gender';
+    $join->left_table = 'users';
+    $join->field = 'entity_id';
+    $join->left_field = 'uid';
+    $join->type = 'LEFT';
+
+   $query->table_queue['ugender'] = array (
+      'alias' => 'ugender',
+      'table' => 'field_data_field_gender',
+      'relationship' => 'users',
+      'join' => $join,
+    );
+    $query->where[1]['conditions'][]=array(
+      "field"=>"ugender.field_gender_value",
+      "value"=>$gender,
+      "operator"=>"=",
+      );
+    $query->distinct=true;
+  }
+
+ 
 }
 
 }
@@ -1994,7 +2035,7 @@ function custom_alter_node_update($node) {
 global $user;
 if(($node->type == 'community_video') && ($user->uid == 1)) {
 
-// The Mudcat Admin has shared a video: “Evangelism Training #1�?
+// The Mudcat Admin has shared a video: “Evangelism Training #1\E2\80?
 /*
 db_insert('lifeecho_alerts')
 ->fields(array(

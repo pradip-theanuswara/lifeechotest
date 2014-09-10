@@ -43,6 +43,7 @@ echo $node->body['und'][0]['value']; ?></div>
 <div class="select-box"><?php print render($form['field_user_city']); ?></div>
 <div class="select-box"><?php print render($form['field_user_state']); ?></div>
 <div class="select-box"><?php print render($form['field_user_zip_code']); ?></div>
+<div class="select-box"><?php print render($form['field_gender']); ?></div>
 <div class="select-box"><?php print render($form['field_age']); ?></div>
 <?php }
 /* first login check else case */
@@ -63,6 +64,7 @@ echo $node->body['und'][0]['value']; ?></div>
 <div class="clear-left"><?php print render($form['field_list_christian_organ']); ?></div>
 <div class="clear-left"><?php print render($form['field_what_is_your_personal_stat']); ?></div>
 <div class="clear-left"><?php print render($form['field_what_do_you_want_to_tell_o']); ?></div>
+<div class="select-box"><?php print render($form['field_gender']); ?></div>
 <div class="select-box"><?php print render($form['field_marital_status']); ?></div>
 <div class="select-box"><?php print render($form['field_children']); ?></div>
 <div class="txt-box"><?php print render($form['field_occupation']); ?></div>
