@@ -14,7 +14,7 @@
     <div class="communityfield_row">
         <?php
         print render($form['field_what_is_the_name_of_your_o']);
-        ?>
+        ?> <span style="color:red;position:absolute;margin-top:-50px;margin-left:360px;font-weight:bold;">*</span>
     </div>
     <div class="clear">
     </div>
@@ -37,9 +37,10 @@
 <?php
 
         print render($form['field_email_address']);
-        
+        ?> <span style="color:red;position:absolute;margin-top:-50px;margin-left:360px;font-weight:bold;">*</span>
+        <?php
         print render($form['field_website']);
-        ?>
+        ?> 
     </div>
 
    </div>
@@ -116,7 +117,7 @@
        <div class="communityfield_chkbox">
         <?php
        
-        print render($form['field_beliveaccept']);
+         print render($form['field_beliveaccept']);
         ?>
     </div>
     <div class="communityfield_chktxt">
@@ -175,6 +176,5 @@ if(arg(2) != 'edit') { ?>
     <div class="communityBtn"><?php print drupal_render($form['actions']['submit']); ?></div>
     <div class="clear">
     </div>
-
     <div style="display:none"><?php print drupal_render_children($form); ?></div>
 </div>
