@@ -746,7 +746,7 @@ function custom_alter_node_presave($node) {
             ->fields(array(
             'alerttype' => 'invite_members',
             'alertto' => $user->uid, // id of the user
-           // 'alerttext' => "You don't have any community members yet.  Go to the 'Invitations' button to build your community.", // 12-12
+            // 'alerttext' => "You don't have any community members yet.  Go to the 'Invitations' button to build your community.", // 12-12
             'alertfrom' => $user->uid,
 	    'alerttime' => REQUEST_TIME,
 	    'accept_status' => 0,    // need to accept user relationship request
@@ -2197,7 +2197,6 @@ function get_adminrole_bycommunity($communityid,$uid) {
 }
 
 function get_non_accountableuser($uid = '') {
-
    $nodeinfo = array();
    global $user;
    $nodes = get_allcommunities_forauser(); 
@@ -2227,6 +2226,4 @@ while($record = $result->fetchAssoc()) {
 }
 }
    return $nodeinfo;
-
-
 }
