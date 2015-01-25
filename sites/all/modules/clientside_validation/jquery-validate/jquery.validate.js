@@ -6,7 +6,7 @@
  *
  * Copyright (c) 2006 - 2011 Jörn Zaefferer
  *
- * Dual licensed under the MIT and GPL licenses:
+ * Dual  licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  */
@@ -126,8 +126,8 @@ $.extend($.fn, {
 			case "add":
 				$.extend(existingRules, $.validator.normalizeRule(argument));
 				staticRules[element.name] = existingRules;
-				if (argument.messages)
-					settings.messages[element.name] = $.extend( settings.messages[element.name], argument.messages );
+				if (argument.messages) 
+					settings.messages[element.name] = $.extend( settings.messages[element.name], argument.messages );				
 				break;
 			case "remove":
 				if (!argument) {
