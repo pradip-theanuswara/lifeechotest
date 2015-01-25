@@ -46,11 +46,26 @@ function initializeTable() {
 
 //passing a from first check.
 
-function change_stat_first(b,status,a,groupId,userId,changeType){
+function change_stat_first(q,b,a,groupId,userId,changeType){
 	
-  
- 
-   if(status!='1')
+ jQuery('#cg_check'+userId).next('.save_gif_outer').show();
+	jQuery.ajax({
+		cache: false,
+		type:'POST',
+		url: Drupal.settings.basePath + '?q=community/change_disipler',
+		data: {group_id: groupId,user_id: userId,change_type:changeType},
+		dataType: 'text',
+		error: function(request, status, error) {
+			alert(status);
+		},
+		success: function(data, status, request) {
+			var html = data;
+			jQuery('#cg_check'+userId).next('.save_gif_outer').hide();
+
+//alert(b.checked);
+		}
+	});
+  /* if(a!='108')
     {
 		alert('This user has not choosed discipler option in his/her profile');
 		jQuery('input:checkbox[name='+b.name+']').attr('checked',false);
@@ -76,7 +91,7 @@ function change_stat_first(b,status,a,groupId,userId,changeType){
 //alert(b.checked);
 		}
 	});	
-	}
+	}*/
 	
 	}
 
@@ -100,11 +115,10 @@ function change_stat(groupId,userId,changeType){
 		success: function(data, status, request) {
 			var html = data;
 			jQuery('#cg_check'+userId).next('.save_gif_outer').hide();
-	
+	               
 
 		}
-	});	
-	
+	});
 	
 	}
 
