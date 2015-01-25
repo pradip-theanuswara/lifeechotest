@@ -4,6 +4,7 @@
  * Attach handlers to evaluate the strength of any password fields and to check
  * that its confirmation is correct.
  */
+ 
 Drupal.behaviors.password = {
   attach: function (context, settings) {
     var translate = settings.password;
@@ -188,7 +189,6 @@ Drupal.behaviors.fieldUserRegistration = {
           }
         });
       });
-
     }
   }
 };
