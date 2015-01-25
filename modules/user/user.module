@@ -1216,6 +1216,47 @@ function user_validate_current_pass(&$form, &$form_state) {
 function user_account_form_validate($form, &$form_state) {
   if ($form['#user_category'] == 'account' || $form['#user_category'] == 'register') {
     $account = $form['#user'];
+    //echo '<pre>';
+    //print_r($form_state['input']);die();
+    //print_r($account);die();
+    if($form_state['input']['roles']['7']=='7')
+    {
+        //print_r(db_select('lifeecho_og_discipler')->fields('lifeecho_og_discipler', array('uid'))->condition('uid', $account->uid, '=')->execute()->fetchField());die();
+        if ((bool) db_select('lifeecho_og_discipler')->fields('lifeecho_og_discipler', array('gid'))->condition('uid', $account->uid, '=')->execute()->fetchField()) {
+        //form_set_error('name', t('The name %name is already taken.', array('%name' => $form_state['values']['name'])));
+      }
+      else{
+        form_set_error('roles', t('User Not Fullfill the condition for Role %roles ', array('%roles' => 'discipler')));
+      }
+        
+        if($form_state['input']['field_how_do_want_to_use_lif']['und']['108']!='108' || $form_state['input']['field_how_closely_do_belief']['und']!='7' || $form_state['input']['field_select_one_of_followin']['und']!='4')
+        {
+          
+          form_set_error('roles', t('User Not Fullfill the condition for Role %roles ', array('%roles' => 'discipler')));
+        }
+    }
+    else
+    {
+    $role_val=db_select('users_roles')->fields('users_roles', array('rid'))->condition('uid', $account->uid, '=')->execute()->fetchField();
+    //print_r($role_val);die();
+    if($role_val==7)
+    {
+        if ((bool) db_select('lifeecho_og_discipler')->fields('lifeecho_og_discipler', array('gid'))->condition('uid', $account->uid, '=')->execute()->fetchField()) {
+        //form_set_error('name', t('The name %name is already taken.', array('%name' => $form_state['values']['name'])));
+      }
+      else{
+        form_set_error('roles', t('User Not Fullfill the condition for Role %roles ', array('%roles' => 'discipler')));
+      }
+        
+        if($form_state['input']['field_how_do_want_to_use_lif']['und']['108']!='108' || $form_state['input']['field_how_closely_do_belief']['und']!='7' || $form_state['input']['field_select_one_of_followin']['und']!='4')
+        {
+          
+          form_set_error('roles', t('User Not Fullfill the condition for Role %roles ', array('%roles' => 'discipler')));
+        }
+      }
+    }
+    
+    
     // Validate new or changing username.
     if (isset($form_state['values']['name'])) {
       if ($error = user_validate_name($form_state['values']['name'])) {
@@ -3961,7 +4002,7 @@ function user_file_download_access($field, $entity_type, $entity) {
  * To prevent new Drupal 7 sites from installing Profile module, and
  * unwittingly ending up with two completely different and incompatible methods
  * of extending users, only make the Profile module available if the profile_*
- * tables are present.
+ * tables are present..
  *
  * @todo: Remove in D8, pending upgrade path.
  */
