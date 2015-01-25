@@ -1,5 +1,5 @@
 /*jshint strict:true, browser:true, curly:true, eqeqeq:true, expr:true, forin:true, latedef:true, newcap:true, noarg:true, trailing: true, undef:true, unused:true */
-/*global Drupal: true, jQuery: true*/
+/*global  Drupal: true, jQuery: true*/
 /**
  * File:        clientside_validation_field_valdiation.js
  * Version:     7.x-1.x
@@ -22,6 +22,7 @@
     attach: function () {
       $(document).bind('clientsideValidationInitialized', function(){
         for (var formid in Drupal.myClientsideValidation.validators) {
+         
           if (Drupal.myClientsideValidation.validators.hasOwnProperty(formid)) {
             Drupal.myClientsideValidation.validators[formid].settings.showErrors = function (errorMap, errorList) {
               this.defaultShowErrors();
