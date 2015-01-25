@@ -1024,7 +1024,7 @@ case 'user_relationship_block':
 $block['subject'] = 'User relationship Block';
 
 /*
-* check already a relation b/w the requester and requestee
+* check  already a relation b/w the requester and requestee
 */
 $query = db_select('user_relationships','ur')
 ->fields('ur', array('requestee_id','approved','rid'))
@@ -1385,7 +1385,7 @@ if($ct>=1) {
 if(count($role_string) > 0 && $user->uid <> 0) {
 
 	if (in_array('108-109', $role_string , true)) {
-	$options[1] = t('Offer to Disciple '.$user_info->name);
+	$options[1] = t('Offer to Disciple'.$user_info->name);
 	}
 
 	if (in_array('109-108', $role_string , true)) {
@@ -1486,6 +1486,7 @@ if($rtid == 1 || $rtid ==2) {
 //print lifeecho_og_users_roles(); // user roles
 //die;
 
+
 if(lifeecho_og_users_roles() == 0) {
 
 $message = t("You must ").l(t('join'),'joincommunity')."/".l(t('start'),'node/add/community-lifeecho').t(" a community and be approved as a discipler by a community administrator before you can offer to disciple someone.");
@@ -1510,11 +1511,12 @@ $key_value = array_keys($res);
 if($existing == 0) {
 
 if($rtid == 1) { // request is type of 'discipler'
-
+//comment by kishan patel
+/*
 if(count($res) == 0) {
 // redirect user to a comunity request form.
 drupal_goto('community/joindiscipler/'.$requestee_id);
-}
+}*/
 
 } // rtid check end
 
@@ -2202,5 +2204,4 @@ function userrelationship_match_gender($user_id1,$user_id2)
   }
   else $gender_2=null;
   return $gender_1==$gender_2;
-
 }
