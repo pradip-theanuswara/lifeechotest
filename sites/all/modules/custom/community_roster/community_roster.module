@@ -1,6 +1,6 @@
 <?php
 /* 
-*Implements hook_menu
+*Implements  hook_menu
 */
 function community_roster_menu() {
   $items = array();
@@ -25,7 +25,12 @@ function community_roster_menu() {
 	  'page callback' => 'change_role',
 	  'access arguments' => array('access content')
 	); 
-
+	$items['community/change_disipler']=array(
+		'title'=>'community member disipler role change',
+		'type'=>MENU_CALLBACK,
+		'page callback'=>'change_disipler',
+		'access arguments'=>array('access content')
+	);
 	  return $items;
 }
 
@@ -165,16 +170,97 @@ if($select_one_of_followin_value == 5 || $select_one_of_followin_value == 6 || $
 $check_status = 'disabled="disabled"';
 }
 if(get_adminrole_bycommunity($node->gid,$node->etid)){
-	$admin_ischeck='';
+	$admin_ischeck='checked="checked"';
 }
-$id=$node->etid;
+$id=$node->gid;
+
+//code by kishan for created community list
+if($select_one_of_followin_value!=4 || $how_closely_do_belief_tid!=7 || $a!=108)
+{
+$disipler_disable='disabled="disabled"';
+}
+else
+{
+$disipler_disable='';
+}
+/*$created_community = db_select('node', 'cr')
+    //->leftJoin('og_membership', 'm', 'cr.nid = m.gid')
+    ->condition('uid', $node->uid,'=')
+    ->condition('type','community_lifeecho','=')
+    ->fields('cr')
+    ->execute();
+   // print_r($created_community);die();
+   $created_commun_list='';
+if($created_community->rowCount()>0)
+{
+$created_commun_list='<ul>';
+while($record = $created_community->fetchAssoc()) {
+if($user->uid!=$node->uid)
+{
+	continue;
+}
+$created_commun_list.= '<li>'.l($record['title'],'node/'.$record['nid']).'</li>';
+}
+	
+	$created_commun_list.='</ul>';
+}*/
+
+$joined_community = db_select('og_membership', 'm')
+    
+    ->condition('etid', $node->uid,'=')
+    ->condition('entity_type','user','=')
+    ->fields('m')
+    ->execute();
+   
+   $joined_commun_list='';
+if($joined_community->rowCount()>0)
+{
+$joined_commun_list='<ul>';
+while($record = $joined_community->fetchAssoc()) {
+
+/*if($user->uid!=$node->uid)
+{
+	continue;
+}*/
+if($node->gid!=$record['gid'])
+{
+	continue;
+}
+$j_c_name=db_select('node','n')
+	->condition('nid',$record['gid'])
+	->fields('n')
+	->execute();
+	while($record1 = $j_c_name->fetchAssoc()) {
+	
+$joined_commun_list.= '<li>'.l($record1['title'],'node/'.$record1['nid']).'</li>';
+}
+}
+	
+	$joined_commun_list.='</ul>';
+}
+
+//code for disipler check box --by kishan
+//$check_status = 'disabled="disabled"';
+$role_result = db_select('users_roles', 'ur')
+    ->condition('rid','7','=')
+    ->condition('uid', $node->uid,'=')
+    ->fields('ur')
+    ->execute();
+if($role_result->rowCount()>0)
+{
+	$dicipler_ischeck='checked="checked"';
+}
+else
+{
+	$dicipler_ischeck='';
+}
 		$rows[] = array(
 					'data' => array(
 							 '<img src="http://graph.facebook.com/'.$node->fbuid.'/picture?type=large&amp;width=75&amp;height=75">',
 						  l($node->name, 'user/'. $node->etid),
-						  '<input name="cgm_check_dicipler'.$id.'" type="checkbox" '.$dicipler_ischeck.' onclick="change_stat_first(this,'.$status.','.$a.','.$node->gid.','.$node->etid.',\'dicipler\')"'.$check_status.' class="cg_check_dicipler12" id="cg_check_dicipler'.$id.'" />'.t('Discipler').'',
-						   '<input type="checkbox" '.$admin_ischeck.' onclick="change_stat('.$node->gid.','.$node->etid.',\'admin\')"'.$check_status.' class="cg_check_admin" id="cg_check'.$node->etid.'" />'.t('Admin').'<span class="save_gif_outer"><img  class="save_gif" src="'.base_path().drupal_get_path('module', 'community_roster').'/saving.gif" /></span>',''.get_user_joined_community_ID_by_userID($node->etid,$node->gid).'')
-//  '.l(t("Joined Communities"),"node/11",array("attributes" => array("class" => "showdialog"))).'<div id="terms_dialog"></div>
+						  '<input name="cgm_check_dicipler'.$id.'" type="checkbox" '.$dicipler_ischeck.$node->rid.' onclick="change_stat_first(this,'.$status.','.$a.','.$node->gid.','.$node->etid.',\'dicipler\')"'.$disipler_disable.' class="cg_check_dicipler12" id="cg_check_dicipler'.$id.'" />'.t('Discipler').'',
+						   '<input type="checkbox" '.$admin_ischeck.' onclick="change_stat('.$node->gid.','.$node->etid.',\'admin\')"'.$check_status.' class="cg_check_admin" id="cg_check'.'" />'.t('Admin').'<span class="save_gif_outer"><img  class="save_gif" src="'.base_path().drupal_get_path('module', 'community_roster').'/saving.gif" /></span>',''.get_user_joined_community_ID_by_userID($node->etid,$node->gid).$joined_commun_list.'')
+ // '.l(t("Joined Communities"),"node/11",array("attributes" => array("class" => "showdialog"))).'<div id="terms_dialog"></div>
 		);
 	}
 
@@ -310,6 +396,39 @@ $query = db_insert('og_users_roles')
 		}  
 	
 	}
+	
+	//change disipler --by kishan
+	function change_disipler()
+	{
+		if (!isset($_POST['change_type']) || !isset($_POST['user_id']) || !isset($_POST['group_id']) ) {
+    die('fghjfh'.$_POST['user_id']);
+   }
+   $user_id=$_POST['user_id'];
+   
+   $role_result = db_select('users_roles', 'ur')
+    ->condition('rid','7','=')
+    ->condition('uid', $user_id,'=')
+    ->fields('ur')
+    ->execute();
+    if($role_result->rowCount()>0)
+    {
+    	$num_deleted = db_delete('users_roles')
+  ->condition('rid','7','=')
+    ->condition('uid',$user_id,'=')
+  ->execute();
+    }
+    else
+    {
+    	$nid = db_insert('users_roles') 
+		->fields(array(
+  			'rid' => '7',
+  			'uid' => $user_id,
+  		
+			))
+		->execute();
+    }
+    die(a1);
+	}
 
 /*
 *  Implements hook_block_info
@@ -405,7 +524,7 @@ else {
 }
 $block['content'] .= '</div>';
 $result = db_query("SELECT distinct COUNT(a.requester_id) AS ct 
-FROM user_relationships a JOIN user_relationships b join og_membership as ogm ON a.requestee_id = b.requester_id AND a.requester_id = b.requestee_id AND a.requestee_id  < b.requestee_id where ogm.gid = '$gid' AND ogm.etid =  a.requestee_id AND ogm.state = '1' AND a.approved = '1' AND b.approved='1' AND (select state as activated from og_membership where og_membership.etid = a.requester_id AND og_membership.state='1' AND og_membership.gid='$gid')=1 AND ogm.field_name = 'og_user_node' AND ogm.entity_type = 'user' ");
+FROM user_relationships a JOIN user_relationships b join og_membership as ogm ON a.requestee_id = b.requester_id AND a.requester_id = b.requestee_id AND a.requestee_id  < b.requestee_id where ogm.gid = '$gid' AND ogm.etid =  a.requestee_id AND ogm.state = '1' AND a.approved = '1' AND b.approved='1' AND (select state as activated from og_membership where og_membership.etid = a.requester_id AND og_membership.state='1' AND og_membership.gid='481')=1 AND ogm.field_name = 'og_user_node' AND ogm.entity_type = 'user' ");
 
 $dpair_count = $result->fetchField(0);
   $block['content'] .= '<div id="community_various_info">
