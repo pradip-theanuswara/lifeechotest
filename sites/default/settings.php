@@ -221,7 +221,7 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'lifeechotestcopy',//'d3730c48832dd4beb81700e74421a1acf', lifeechoprod
+      'database' => 'lifeechoprod',//'d3730c48832dd4beb81700e74421a1acf', 
       'username' => 'root',//'u0OaZVNiwZAUC',
       'password' => 'Progger123!',//'p7Fp0LeuOaiQ5',
       'host' => 'localhost',// '10.0.17.107',
