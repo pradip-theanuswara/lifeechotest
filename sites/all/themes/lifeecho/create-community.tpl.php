@@ -78,6 +78,13 @@
         ?>
     </div>
             </div>
+	<div class="communityfield_chkbox">
+	<!--comment by kishan-->
+       <?php
+       
+         //print render($form['field_accept']);
+        ?> 
+    </div>
     <div class="clear">
     </div>
              
@@ -128,7 +135,7 @@
         global $user;
  print t('I , ' . $user->name . ' and my organization, agree with and believe the Statement of Faith above.  ');
         ?>
-<span title="This field is required." class="form-required">*</span>
+<span title="This field is required." class="form-required" style="font-weight:bold;">*</span>
     </div>
         <div class="clear">
     </div>
@@ -154,7 +161,7 @@
         <?php
         print t('By checking this box you agree to all LifeEcho Terms and Conditions. ');
         ?>
-<span title="This field is required." class="form-required">*</span>
+<span title="This field is required." class="form-required" style="font-weight:bold;">*</span>
     </div>
     <div class="clear">
     </div>
@@ -173,6 +180,7 @@ if(arg(2) != 'edit') { ?>
 <?php } ?>
     <div class="clear">
     </div>
+	
     <div class="communityBtn"><?php print drupal_render($form['actions']['submit']); ?></div>
     <div class="clear">
     </div>
