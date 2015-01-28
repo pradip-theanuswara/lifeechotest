@@ -2226,4 +2226,5 @@ while($record = $result->fetchAssoc()) {
 }
 }
    return $nodeinfo;
+
 }
