@@ -175,14 +175,16 @@ if(get_adminrole_bycommunity($node->gid,$node->etid)){
 $id=$node->gid;
 
 //code by kishan for created community list
-
+$disipler_disable='';
 if($select_one_of_followin_value!=4 || $how_closely_do_belief_tid!=7 || $status!=1)
 {
-$disipler_disable='disabled="disabled"';
+//$disipler_disable='disabled="disabled"';
+$disable_val=1;
 }
 else
 {
-$disipler_disable='';
+//$disipler_disable='';
+$disable_val=0;
 }
 /*$created_community = db_select('node', 'cr')
     //->leftJoin('og_membership', 'm', 'cr.nid = m.gid')
@@ -247,16 +249,16 @@ $role_result = db_select('users_roles', 'ur')
     ->condition('uid', $node->uid,'=')
     ->fields('ur')
     ->execute();
-    $dicipler_ischeck='';
+    
 if($role_result->rowCount()>0)
 {
-	//$dicipler_ischeck='checked="checked"';
-	$disable_val=1;
+	$dicipler_ischeck='checked="checked"';
+	
 }
 else
 {
 	$dicipler_ischeck='';
-	$disable_val=0;
+	
 }
 		$rows[] = array(
 					'data' => array(
