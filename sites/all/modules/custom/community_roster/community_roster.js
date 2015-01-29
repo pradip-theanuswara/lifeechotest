@@ -46,8 +46,12 @@ function initializeTable() {
 
 //passing a from first check.
 
-function change_stat_first(q,b,a,groupId,userId,changeType){
-	
+function change_stat_first(q,b,a,groupId,userId,changeType,disable_val){
+	if(disable_val==0)
+	{
+		alert('You are not satisfy the conditions for discipler');
+		return false;
+	}
  jQuery('#cg_check'+userId).next('.save_gif_outer').show();
 	jQuery.ajax({
 		cache: false,
