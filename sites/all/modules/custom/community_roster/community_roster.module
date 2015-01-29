@@ -147,7 +147,7 @@ while($record = $result_checked_answers->fetchAssoc()) {
 $select_one_of_followin_value = $record['field_select_one_of_followin_tid'];
 $how_closely_do_belief_tid = $record['field_how_closely_do_belief_tid'];
 $a= $record['field_how_do_want_to_use_lif_tid'];
-echo $select_one_of_followin_value;die();
+echo $a;
 if($a=='108'){
 	$name=$record['name'];
 	$status=1;
@@ -158,7 +158,7 @@ if($a=='108'){
 //unset($stack);
 //echo "<pre>";
 //print_r($record);
-}
+}die();
 
 
 if($dicipler_ischeck=='checked="checked"')
