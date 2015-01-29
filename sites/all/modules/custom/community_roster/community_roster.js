@@ -51,6 +51,7 @@ function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
 	if(disable_val==0)
 	{
 		var id=q.id;
+		alert(id);
 		alert('You are not satisfy the conditions for discipler');
 		jQuery('#id').attr('checked', false);
 		return false;
