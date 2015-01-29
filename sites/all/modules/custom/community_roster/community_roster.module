@@ -147,7 +147,7 @@ while($record = $result_checked_answers->fetchAssoc()) {
 $select_one_of_followin_value = $record['field_select_one_of_followin_tid'];
 $how_closely_do_belief_tid = $record['field_how_closely_do_belief_tid'];
 $a= $record['field_how_do_want_to_use_lif_tid'];
-
+echo $select_one_of_followin_value;die();
 if($a=='108'){
 	$name=$record['name'];
 	$status=1;
@@ -175,7 +175,7 @@ if(get_adminrole_bycommunity($node->gid,$node->etid)){
 $id=$node->gid;
 
 //code by kishan for created community list
-echo $how_closely_do_belief_tid.$a;die();
+
 if($select_one_of_followin_value!=4 || $how_closely_do_belief_tid!=7 || $a!=108)
 {
 $disipler_disable='disabled="disabled"';
