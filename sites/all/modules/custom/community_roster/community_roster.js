@@ -47,10 +47,12 @@ function initializeTable() {
 //passing a from first check.
 
 function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
-	alert();
+	
 	if(disable_val==0)
 	{
+		var id=q.id;
 		alert('You are not satisfy the conditions for discipler');
+		jQuery('#id').attr('checked', false);
 		return false;
 	}
 	else{
@@ -58,7 +60,7 @@ function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
 	jQuery.ajax({
 		cache: false,
 		type:'POST',
-		url: Drupal.settings.basePath + '?q=community/change_disiple',
+		url: Drupal.settings.basePath + '?q=community/change_disipler',
 		data: {group_id: groupId,user_id: userId,change_type:changeType},
 		dataType: 'text',
 		error: function(request, status, error) {
