@@ -58,7 +58,7 @@ function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
 	jQuery.ajax({
 		cache: false,
 		type:'POST',
-		url: Drupal.settings.basePath + '?q=community/change_disipler',
+		url: Drupal.settings.basePath + '?q=community/change_disiple',
 		data: {group_id: groupId,user_id: userId,change_type:changeType},
 		dataType: 'text',
 		error: function(request, status, error) {
