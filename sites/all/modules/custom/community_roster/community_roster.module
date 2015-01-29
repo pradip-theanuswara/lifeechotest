@@ -247,6 +247,7 @@ $role_result = db_select('users_roles', 'ur')
     ->condition('uid', $node->uid,'=')
     ->fields('ur')
     ->execute();
+    $dicipler_ischeck='';
 if($role_result->rowCount()>0)
 {
 	//$dicipler_ischeck='checked="checked"';
@@ -254,7 +255,7 @@ if($role_result->rowCount()>0)
 }
 else
 {
-	//$dicipler_ischeck='';
+	$dicipler_ischeck='';
 	$disable_val=0;
 }
 		$rows[] = array(
