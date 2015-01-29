@@ -490,8 +490,9 @@ $query->condition('alerttype',array('dplan','dship-video','dship-message','first
 			 
 //die;
 if($row_count > 0) {
-if($record['alerttext']!=0){
+
     $block['content'] = '<div class="alert_head">'.t('Alerts:').'</div>';
+    if($record['alerttext']!=0){
  $block['content'] .= '<div class="clear"></div><div class="Alerts">';
 
 	global $user;
