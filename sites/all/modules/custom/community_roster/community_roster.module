@@ -175,7 +175,7 @@ if(get_adminrole_bycommunity($node->gid,$node->etid)){
 $id=$node->gid;
 
 //code by kishan for created community list
-echo $select_one_of_followin_value;die();
+echo $how_closely_do_belief_tid.$a;die();
 if($select_one_of_followin_value!=4 || $how_closely_do_belief_tid!=7 || $a!=108)
 {
 $disipler_disable='disabled="disabled"';
