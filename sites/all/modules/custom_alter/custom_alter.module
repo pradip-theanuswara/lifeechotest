@@ -742,7 +742,7 @@ function custom_alter_node_presave($node) {
 		$alert_count = $results2['alertcount'];
 		
 		if($alert_count<1){
-		db_insert('lifeecho_alerts')
+		/*db_insert('lifeecho_alerts')
             ->fields(array(
             'alerttype' => 'invite_members',
             'alertto' => $user->uid, // id of the user
@@ -753,7 +753,7 @@ function custom_alter_node_presave($node) {
 	    'request_type' => 0
             
             ))
-            ->execute();
+            ->execute();*/
 		
 		}
 		
