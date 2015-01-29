@@ -47,7 +47,7 @@ function initializeTable() {
 //passing a from first check.
 
 function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
-	alert(disable_val);
+	alert();
 	if(disable_val==0)
 	{
 		alert('You are not satisfy the conditions for discipler');
