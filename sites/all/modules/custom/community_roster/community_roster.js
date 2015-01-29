@@ -53,6 +53,7 @@ function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
 		alert('You are not satisfy the conditions for discipler');
 		return false;
 	}
+	else{
  jQuery('#cg_check'+userId).next('.save_gif_outer').show();
 	jQuery.ajax({
 		cache: false,
@@ -70,6 +71,7 @@ function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
 //alert(b.checked);
 		}
 	});
+	}
   /* if(a!='108')
     {
 		alert('This user has not choosed discipler option in his/her profile');
