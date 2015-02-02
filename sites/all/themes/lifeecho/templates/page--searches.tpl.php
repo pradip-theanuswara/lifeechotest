@@ -315,3 +315,10 @@ print render($block['content']);
    </div><!-- second div end -->
 </div><!-- MPOuter END -->
 </div><!-- MPOuterMost END -->
+
+<style type="text/css">
+.form-text
+{
+ width:266px !important;
+}
+</style>
