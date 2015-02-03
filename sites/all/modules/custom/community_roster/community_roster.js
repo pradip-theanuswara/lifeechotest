@@ -52,7 +52,7 @@ function change_stat_first(q,disable_val,b,a,groupId,userId,changeType){
 	{
 		var id=q.id;
 		
-		alert('You are not satisfy the conditions for discipler');
+		alert('The selected user does not meet the required conditions to be a discipler');
 		jQuery('#'+id).attr('checked', false);
 		return false;
 	}
