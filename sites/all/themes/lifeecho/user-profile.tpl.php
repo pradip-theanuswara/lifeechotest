@@ -19,8 +19,8 @@ foreach($user_opt as $value => $key) {
 <?php 
 /* first login check */
 //if($user->created == $user->login) { 
-// 08-12
-if(check_miniprofile_status() == FALSE && $page['headervideo'] != "") { ?>
+// 08-12 // 5 feb  && $page['headervideo'] != ""
+if(check_miniprofile_status() == FALSE) { ?>
 
 <div id="miniprofile_video">
 <!--
