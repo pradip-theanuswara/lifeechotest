@@ -21,13 +21,24 @@ foreach($user_opt as $value => $key) {
 //if($user->created == $user->login) { 
 // 08-12 // 5 feb  && $page['headervideo'] != ""
 if(check_miniprofile_status() == FALSE) { ?>
-
+<!-- below comment by vijay devani - start -->
+<!--
 <div id="miniprofile_video">
+-->
+<!-- comment by vijay devani - end -->
+
+<!-- comment by old developer - start (it was already there) -->
 <!--
     <iframe width="400" height="260" src="http://www.youtube.com/embed/<?php //echo variable_get('miniprofile_youtubevideoid'); ?>?feature=player_embedded;rel=0;autoplay=1" frameborder="0" allowfullscreen></iframe>
 -->
-<?php print render($page['headervideo']); ?>
+<!-- comment by old developer - end (it was already there) -->
+
+<!-- below comment by vijay devani - start -->
+<!--
+ <?php /* print render($page['headervideo']); */ ?>
 </div>
+-->
+<!-- comment by vijay devani - end -->
 <div class="clear"></div>
 <p class="congrats_txt"><?php print t('Congratulations, in a few short minutes you\'ll have a LifeEcho profile!'); ?></p>
 <p class="congrats_txt"><?php print t('COMPLETE MINI-PROFILE LOG IN TO OPEN YOUR LifeEcho)) HOMEPAGE!'); ?><p>
