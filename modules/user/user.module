@@ -554,7 +554,8 @@ function user_save($account, $edit = array(), $category = 'account') {
         $op = $account->status == 1 ? 'status_activated' : 'status_blocked';
         _user_mail_notify($op, $account);
       }
-
+      //by kishan
+      $result1 = db_query('Call run_score()');
       // Update $edit with any interim changes to $account.
       foreach ($account as $key => $value) {
         if (!property_exists($account->original, $key) || $value !== $account->original->$key) {
