@@ -295,7 +295,7 @@ print render($block['content']);
 <div id="outside_1">
 <?php 
 //$block = module_invoke('views', 'block_view', 'cc6c855887f98bc7adb2024d317612c2');
-$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community_discipler-block_1');
+$block = module_invoke('views', 'block_view', 'user_matches_discipler-block_1');
 print render($block['content']);
 ?>
 </div>
