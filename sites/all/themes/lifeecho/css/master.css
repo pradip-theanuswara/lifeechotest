@@ -4881,3 +4881,8 @@ blockquote:before, blockquote:after {
 		width:750px !important;
 		float:right;
 	}
+/*by kishan*/
+.views-field.views-field-php{
+	margin-left: 20px;
+    text-align: left;
+}
