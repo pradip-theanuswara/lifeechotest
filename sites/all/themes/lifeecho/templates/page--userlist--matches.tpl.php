@@ -294,24 +294,24 @@ print render($block['content']);
 
 <div id="outside_1">
 <?php 
-//$block = module_invoke('views', 'block_view', 'cc6c855887f98bc7adb2024d317612c2');
-$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community_discipler1-block_1');
+$block = module_invoke('views', 'block_view', 'cc6c855887f98bc7adb2024d317612c2');
+//$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community_discipler1-block_1');
 print render($block['content']);
 ?>
 </div>
 
 <div id="outside_2" style="display:none">
 <?php 
-//$block = module_invoke('views', 'block_view', 'b015be95bbcdc5e6d0d51c0640677ffd');
-$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community_displee1-block_1');
+$block = module_invoke('views', 'block_view', 'b015be95bbcdc5e6d0d51c0640677ffd');
+//$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community_displee1-block_1');
 print render($block['content']);
 ?>
 </div>
 
 <div id="outside_3" style="display:none">
 <?php 
-//$block = module_invoke('views', 'block_view', 'a6519ad265d426b3b1606548beddf738');
-$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community1-block_1');
+$block = module_invoke('views', 'block_view', 'a6519ad265d426b3b1606548beddf738');
+//$block = module_invoke('views', 'block_view', 'matches_outside_of_your_community1-block_1');
 print render($block['content']);
 ?>
 </div>
