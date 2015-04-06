@@ -1427,7 +1427,7 @@ if(count($role_string) > 0 && $user->uid <> 0) {
 
 if(count($options) != 0 ) {
 
-	if(count($options) == 1 ) {
+/*	if(count($options) == 1 ) {
 $default_key = array_keys($options);
 	$form['invite_select_opt'] = array(
 	    '#type' => 'radios',
@@ -1446,7 +1446,7 @@ $default_key = array_keys($options);
  	    '#required' => TRUE,
 	  );
 
-	}
+	}*/
 
 $form['requestee_id'] = array('#type' => 'hidden', '#value' => $user_id);
 $form['requester_id'] = array('#type' => 'hidden', '#value' => $user->uid);
