@@ -1450,7 +1450,7 @@ $default_key = array_keys($options);
 
 $form['requestee_id'] = array('#type' => 'hidden', '#value' => $user_id);
 $form['requester_id'] = array('#type' => 'hidden', '#value' => $user->uid);
-$form['submit'] = array('#type' => 'submit', '#value' => t('Invite1'));
+$form['submit'] = array('#type' => 'submit', '#value' => t('Invite'));
 return $form;
 }
 else {
